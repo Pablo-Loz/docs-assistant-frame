@@ -1,10 +1,23 @@
 services:
+  caddy:
+    image: caddy:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - api
+    restart: always
+
   api:
     build:
       context: ./pipelines
       dockerfile: Dockerfile
-    ports:
-      - "9099:9099"
+    expose:
+      - "9099"
     volumes:
       - ./pipelines:/app/pipelines
     environment:
@@ -17,8 +30,8 @@ services:
 
   chromadb:
     image: chromadb/chroma:latest
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
     volumes:
       - chromadb-data:/chroma/chroma
     environment:
@@ -35,3 +48,5 @@ services:
 
 volumes:
   chromadb-data:
+  caddy_data:
+  caddy_config:

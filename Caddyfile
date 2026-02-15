@@ -1,0 +1,7 @@
+# Production: replace with your domain
+# chat.tudominio.com {
+
+# Development: use localhost
+:80 {
+    reverse_proxy api:9099
+}

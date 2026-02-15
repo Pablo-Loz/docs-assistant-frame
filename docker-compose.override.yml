@@ -1,0 +1,12 @@
+# Local development overrides
+# This file is automatically loaded by docker compose
+# It exposes ports directly for local development
+# In production, delete this file or rename it - Caddy handles everything
+services:
+  api:
+    ports:
+      - "9099:9099"
+
+  chromadb:
+    ports:
+      - "8000:8000"
