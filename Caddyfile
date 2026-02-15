@@ -1,7 +1,10 @@
-# Production: replace with your domain
-# chat.tudominio.com {
+placloud.dpdns.org {
+    handle /demo* {
+        root * /srv
+        file_server
+    }
 
-# Development: use localhost
-:80 {
-    reverse_proxy api:9099
+    handle {
+        reverse_proxy api:9099
+    }
 }
