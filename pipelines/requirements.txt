@@ -1,0 +1,24 @@
+# RAG Pipeline Dependencies
+
+# Pydantic AI with Groq + OpenAI-compatible (Cerebras) support
+pydantic-ai-slim[groq,openai]>=0.0.10
+
+# Vector Store
+chromadb>=0.4.0
+
+# Local Embeddings (used by ChromaDB DefaultEmbeddingFunction)
+sentence-transformers>=2.2.0
+
+# Text Processing
+langchain-text-splitters>=0.2.0
+
+# Observability
+logfire[requests]>=0.40.0
+
+# Utilities
+python-dotenv>=1.0.0
+
+# API Server
+fastapi>=0.110.0
+uvicorn[standard]>=0.27.0
+sse-starlette>=1.6.0

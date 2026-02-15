@@ -1,0 +1,37 @@
+services:
+  api:
+    build:
+      context: ./pipelines
+      dockerfile: Dockerfile
+    ports:
+      - "9099:9099"
+    volumes:
+      - ./pipelines:/app/pipelines
+    environment:
+      - CHROMA_HOST=http://chromadb:8000
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: always
+    depends_on:
+      - chromadb
+
+  chromadb:
+    image: chromadb/chroma:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - chromadb-data:/chroma/chroma
+    environment:
+      - ANONYMIZED_TELEMETRY=false
+    restart: always
+
+  chromadb-admin:
+    image: fengzhichao/chromadb-admin:latest
+    ports:
+      - "3001:3001"
+    depends_on:
+      - chromadb
+    restart: always
+
+volumes:
+  chromadb-data:

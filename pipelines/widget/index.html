@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bot Tecnico</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div id="chat">
+    <header>
+      <div class="header-dot"></div>
+      <span>Bot Tecnico</span>
+    </header>
+
+    <main id="messages">
+      <div class="message assistant">
+        <div class="bubble">Hola! Soy tu asistente. Preguntame lo que necesites sobre la documentacion disponible.</div>
+      </div>
+      <div id="suggestions"></div>
+    </main>
+
+    <form id="input-form">
+      <input
+        id="input"
+        type="text"
+        placeholder="Escribe tu pregunta..."
+        autocomplete="off"
+      />
+      <button type="submit" id="send-btn" aria-label="Enviar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+        </svg>
+      </button>
+    </form>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpositaYa - Tu academia de oposiciones online</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #1a1a2e;
+      background: #f8f9fa;
+    }
+
+    /* NAV */
+    nav {
+      background: #1a1a2e;
+      color: #fff;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
+    .logo span { color: #f59e0b; }
+    nav ul { list-style: none; display: flex; gap: 28px; }
+    nav a { color: #cbd5e1; text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
+    nav a:hover { color: #fff; }
+    .nav-cta {
+      background: #f59e0b;
+      color: #1a1a2e !important;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      padding: 80px 40px;
+      text-align: center;
+    }
+    .hero h1 { font-size: 42px; margin-bottom: 16px; line-height: 1.2; }
+    .hero h1 span { color: #f59e0b; }
+    .hero p { font-size: 18px; color: #94a3b8; max-width: 600px; margin: 0 auto 32px; }
+    .hero-cta {
+      display: inline-block;
+      background: #f59e0b;
+      color: #1a1a2e;
+      padding: 14px 36px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .2s;
+    }
+    .hero-cta:hover { transform: translateY(-2px); }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 48px;
+    }
+    .stat-num { font-size: 32px; font-weight: 700; color: #f59e0b; }
+    .stat-label { font-size: 13px; color: #94a3b8; margin-top: 4px; }
+
+    /* SECTION */
+    section { padding: 64px 40px; max-width: 1100px; margin: 0 auto; }
+    section h2 { font-size: 28px; margin-bottom: 12px; }
+    section .subtitle { color: #64748b; margin-bottom: 40px; font-size: 16px; }
+
+    /* CARDS */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+    .card h3 { font-size: 18px; margin-bottom: 8px; }
+    .card p { color: #64748b; font-size: 14px; line-height: 1.6; }
+    .card .tag {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+    .bg-blue { background: #dbeafe; color: #1d4ed8; }
+    .bg-green { background: #dcfce7; color: #16a34a; }
+    .bg-purple { background: #f3e8ff; color: #9333ea; }
+    .bg-amber { background: #fef3c7; color: #d97706; }
+
+    /* TESTIMONIALS */
+    .testimonials { background: #fff; border-radius: 14px; padding: 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+    .testimonial {
+      display: flex;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .testimonial:last-child { border-bottom: none; }
+    .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #475569;
+      flex-shrink: 0;
+    }
+    .testimonial-text { font-size: 14px; color: #475569; line-height: 1.6; }
+    .testimonial-name { font-weight: 600; color: #1a1a2e; font-size: 14px; margin-bottom: 4px; }
+    .stars { color: #f59e0b; font-size: 13px; margin-bottom: 6px; }
+
+    /* FOOTER */
+    footer {
+      background: #1a1a2e;
+      color: #94a3b8;
+      text-align: center;
+      padding: 32px 40px;
+      font-size: 13px;
+    }
+
+    /* CHAT WIDGET - floating button + iframe */
+    #chat-widget-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+    }
+    #chat-toggle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #1a1a2e;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform .2s;
+    }
+    #chat-toggle:hover { transform: scale(1.08); }
+    #chat-toggle svg { width: 28px; height: 28px; }
+    #chat-frame {
+      display: none;
+      position: absolute;
+      bottom: 72px;
+      right: 0;
+      width: 380px;
+      height: 520px;
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      background: #fff;
+    }
+    #chat-frame.open { display: block; }
+
+    @media (max-width: 500px) {
+      #chat-frame { width: calc(100vw - 32px); right: -8px; height: 70vh; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Oposita<span>Ya</span></div>
+    <ul>
+      <li><a href="#">Oposiciones</a></li>
+      <li><a href="#">Temarios</a></li>
+      <li><a href="#">Tests</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#" class="nav-cta">Empieza gratis</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Tu plaza te espera.<br>Nosotros te <span>preparamos</span>.</h1>
+    <p>La academia online con la tasa de aprobados mas alta de Espana. Temarios actualizados, tests ilimitados y tutores especializados.</p>
+    <a href="#" class="hero-cta">Ver oposiciones disponibles</a>
+    <div class="hero-stats">
+      <div><div class="stat-num">12.400+</div><div class="stat-label">Alumnos aprobados</div></div>
+      <div><div class="stat-num">94%</div><div class="stat-label">Tasa de aprobados</div></div>
+      <div><div class="stat-num">85+</div><div class="stat-label">Oposiciones</div></div>
+    </div>
+  </div>
+
+  <!-- OPOSICIONES -->
+  <section>
+    <h2>Oposiciones destacadas</h2>
+    <p class="subtitle">Las convocatorias con mas plazas este ano</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon bg-blue">&#9878;</div>
+        <h3>Auxiliar Administrativo del Estado</h3>
+        <p>Grupo C2. Temario completo con 1.200+ preguntas tipo test. Simulacros de examen actualizados a la ultima convocatoria.</p>
+        <span class="tag bg-blue">5.000 plazas</span>
+      </div>
+      <div class="card">
+        <div class="card-icon bg-green">&#9733;</div>
+        <h3>Guardia Civil</h3>
+        <p>Preparacion integral: conocimientos, psicotecnicos, pruebas fisicas y entrevista personal. Con ex-opositores como tutores.</p>
+        <span class="tag bg-green">2.650 plazas</span>
+      </div>
+      <div class="card">
+        <div class="card-icon bg-purple">&#9874;</div>
+        <h3>Correos - Personal Operativo</h3>
+        <p>Programa intensivo de 3 meses. Test de repaso diario y tutoria semanal en grupo reducido.</p>
+        <span class="tag bg-purple">3.421 plazas</span>
+      </div>
+      <div class="card">
+        <div class="card-icon bg-amber">&#9880;</div>
+        <h3>Hacienda Publica</h3>
+        <p>Cuerpo General Administrativo. Modulos por bloques tematicos con examenes parciales y finales.</p>
+        <span class="tag bg-amber">1.800 plazas</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section>
+    <h2>Lo que dicen nuestros alumnos</h2>
+    <p class="subtitle">Miles de aprobados avalan nuestro metodo</p>
+    <div class="testimonials">
+      <div class="testimonial">
+        <div class="avatar">ML</div>
+        <div>
+          <div class="testimonial-name">Maria Lopez</div>
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-text">Aprobe Auxiliar Administrativo a la primera. Los tests son clavados a los del examen real. Sin duda la mejor inversion que he hecho.</div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="avatar">JR</div>
+        <div>
+          <div class="testimonial-name">Javier Ruiz</div>
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-text">Llevaba 2 anos preparandome por mi cuenta sin exito. Con OpositaYa aprobe la oposicion de Correos en 4 meses. El seguimiento del tutor fue clave.</div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="avatar">AG</div>
+        <div>
+          <div class="testimonial-name">Ana Garcia</div>
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+          <div class="testimonial-text">La plataforma es muy intuitiva y los temarios estan super bien estructurados. El asistente de dudas es genial para resolver preguntas rapidas.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2026 OpositaYa S.L. — Todos los derechos reservados. | Aviso Legal | Politica de Privacidad
+  </footer>
+
+  <!-- CHAT WIDGET -->
+  <div id="chat-widget-container">
+    <iframe id="chat-frame" src="http://localhost:9099/"></iframe>
+    <button id="chat-toggle" aria-label="Abrir chat de ayuda">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+    </button>
+  </div>
+
+  <script>
+    const toggle = document.getElementById("chat-toggle");
+    const frame = document.getElementById("chat-frame");
+    toggle.addEventListener("click", () => {
+      frame.classList.toggle("open");
+    });
+  </script>
+
+</body>
+</html>
